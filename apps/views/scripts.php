@@ -1,6 +1,6 @@
     <?php
-    if (isset($_SESSION['Logged']) && (int)$_SESSION['Logged']['level'] > 3) {
-        require '../views/back/sidebarbottom.php';
+    if (isset($_SESSION['Logged']) && (int)$_SESSION['Logged']['level'] >= 3) {
+        require '../views/back/sidebarbottom' . $_SESSION['Logged']['level'] . '.php';
     }
     ?>
     </div>

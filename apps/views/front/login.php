@@ -62,7 +62,7 @@ if (isset($_COOKIE['userLogged'])) {
 }
 
 $Title = "Se connecter";
-$Description = "Connectez-vous à votre espace membre PARIS STREET WORKOUT BAKET BALL à Dugny pour accéder à nos services de coaching sportif et éducatif, individuel ou en équipe. Gérez facilement votre progression et expérience personnelle. Participations aux stages et évènements mis en place par notre équipe pédagogique.";
+$Description = "";
 
 require '../views/header.php';
 ?>

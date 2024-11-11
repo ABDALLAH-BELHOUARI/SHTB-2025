@@ -1,37 +1,37 @@
 <?php
 
-class PSWBB
+class Shatibi
 {
     public function checkData($data)
     {
         $error = [];
 
-        if (!isset($data["civilitePSWBB"])) {
-            $error['civilitePSWBB'] = "Définir la civilité";
+        if (!isset($data["civiliteShatibi"])) {
+            $error['civiliteShatibi'] = "Définir la civilité";
         }
-        if (empty($data["phonePSWBB"])) {
-            $error['phonePSWBB'] = "Saisir le téléphone";
+        if (empty($data["phoneShatibi"])) {
+            $error['phoneShatibi'] = "Saisir le téléphone";
         }
-        $data["responsablePSWBB"] = mb_convert_case(trim($data["responsablePSWBB"]), MB_CASE_TITLE, "UTF-8");
-        if (empty($data["responsablePSWBB"])) {
-            $error['responsablePSWBB'] = "Renseigner le(a) responsable";
+        $data["responsableShatibi"] = mb_convert_case(trim($data["responsableShatibi"]), MB_CASE_TITLE, "UTF-8");
+        if (empty($data["responsableShatibi"])) {
+            $error['responsableShatibi'] = "Renseigner le(a) responsable";
         }
-        $data["emailPSWBB"] = mb_convert_case(trim($data["emailPSWBB"]), MB_CASE_LOWER, "UTF-8");
-        if (empty($data["emailPSWBB"])) {
-            $error['emailPSWBB'] = "Saisir l'adresse email";
-        } elseif (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $data["emailPSWBB"])) {
-            $error['emailPSWBB'] = "Format d'email invalide";
+        $data["emailShatibi"] = mb_convert_case(trim($data["emailShatibi"]), MB_CASE_LOWER, "UTF-8");
+        if (empty($data["emailShatibi"])) {
+            $error['emailShatibi'] = "Saisir l'adresse email";
+        } elseif (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $data["emailShatibi"])) {
+            $error['emailShatibi'] = "Format d'email invalide";
         }
-        $data["adressePSWBB"] = mb_convert_case(trim($data["adressePSWBB"]), MB_CASE_TITLE, "UTF-8");
-        if (empty($data["adressePSWBB"])) {
-            $error['adressePSWBB'] = "Saisir l'adresse'";
+        $data["adresseShatibi"] = mb_convert_case(trim($data["adresseShatibi"]), MB_CASE_TITLE, "UTF-8");
+        if (empty($data["adresseShatibi"])) {
+            $error['adresseShatibi'] = "Saisir l'adresse'";
         }
-        if (empty($data["cpPSWBB"])) {
-            $error['cpPSWBB'] = "Code Postal";
+        if (empty($data["cpShatibi"])) {
+            $error['cpShatibi'] = "Code Postal";
         }
-        $data["villePSWBB"] = mb_convert_case(trim($data["villePSWBB"]), MB_CASE_TITLE, "UTF-8");
-        if (empty($data["villePSWBB"])) {
-            $error['villePSWBB'] = "Saisir la ville";
+        $data["villeShatibi"] = mb_convert_case(trim($data["villeShatibi"]), MB_CASE_TITLE, "UTF-8");
+        if (empty($data["villeShatibi"])) {
+            $error['villeShatibi'] = "Saisir la ville";
         }
         $data["whatsapp"] = mb_convert_case(trim($data["whatsapp"]), MB_CASE_LOWER, "UTF-8");
         $data["facebook"] = mb_convert_case(trim($data["facebook"]), MB_CASE_LOWER, "UTF-8");
@@ -44,7 +44,7 @@ class PSWBB
         ];
     }
 
-    public function savePSWBB($data)
+    public function saveShatibi($data)
     {
         $row = "";
         foreach ($_POST as $k => $v) {

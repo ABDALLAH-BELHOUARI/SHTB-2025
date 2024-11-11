@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSW Basket Ball</title>
+    <title>Centre SHATIBI IDF</title>
 </head>
 
 <body>

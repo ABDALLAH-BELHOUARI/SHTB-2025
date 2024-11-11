@@ -223,36 +223,6 @@ a[data-toggle="collapse"] {
   display: block;
   margin: 50px auto;
 }
-.tableMembre {
-  width: 100%; 
-  table-layout: fixed; 
-  background: #fff;
-}
-.tableMembre td {
-  color: var(--shtb-dark);
-  text-align: center;
-  padding: 15px 0 10px;
-  cursor: pointer;
-  font-weight: 600;
-  border-bottom: 1px solid #bbb;
-  background: linear-gradient(#fff, #ddd);
-  &:hover {
-    color: var(--shtb-orange);
-    background: var(--grady-dark);
-  }
-  &:hover div {
-    color: var(--shtb-orange);
-  }
-  &:hover i {
-    color: #fff;
-  }
-}
-.tableMembre td i {
-  color: var(--shtb-orange);
-}
-.tableMembre td:not(:first-child) {
-  border-left: 1px dotted var(--shtb-dark);
-}
 #sidebarbottom {
   display: none;
   position: fixed !important;

@@ -1,8 +1,8 @@
 <?php
-ControlAccess([1, 2, 5]);
+ControlAccess([1, 2, 3]);
 
 
-$Title = $Description = 'Interface Membre';
+$Title = $Description = 'Interface Ustad';
 require '../views/header.php';
 ?>
 

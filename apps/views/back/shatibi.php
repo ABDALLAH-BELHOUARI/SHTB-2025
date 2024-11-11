@@ -1,8 +1,8 @@
 <?php
-$PSWBB = new PSWBB();
+$Shatibi = new Shatibi();
 
-if (isset($_POST['subFormPSWBB'])) {
-    $checkData = $PSWBB->checkData($_POST);
+if (isset($_POST['subFormShatibi'])) {
+    $checkData = $Shatibi->checkData($_POST);
 
     $error = $checkData['errors'];
     $_POST = $checkData['data'];
@@ -11,23 +11,23 @@ if (isset($_POST['subFormPSWBB'])) {
         $e = count($error) == 1 ? "l'erreur contenue" : "les " . count($error) . " erreurs contenues";
         setFlash("Désolé !", "Veuillez corriger " . $e . " dans le formulaire.", "danger");
     } else {
-        unset($_POST['subFormPSWBB']);
-        $savePSWBB = $PSWBB->savePSWBB($_POST);
+        unset($_POST['subFormShatibi']);
+        $saveShatibi = $Shatibi->saveShatibi($_POST);
 
-        if ($savePSWBB['result']) {
-            setFlash("Opération terminée.", $savePSWBB['response']);
+        if ($saveShatibi['result']) {
+            setFlash("Opération terminée.", $saveShatibi['response']);
         } else {
-            setFlash("Désolé !", $savePSWBB['response'], "danger");
+            setFlash("Désolé !", $saveShatibi['response'], "danger");
         }
         unset($_POST);
-        header("Location:?slug=PSWBB");
+        header("Location:?slug=shatibi");
         die();
     }
 } else {
     $_POST = $Params;
 }
 
-$Title = $Description = "Informations PSWBB ";
+$Title = $Description = "Informations Shatibi ";
 require '../views/header.php';
 ?>
 
@@ -41,19 +41,19 @@ require '../views/header.php';
         <div class="col-lg-4 col-md-10 col-sm-8 cols-xs-12 mt-3">
             <div class="card-header">
                 <div class="card-title">Informations Générales</div>
-                <div class="card-subtitle">Identification</div>
+                <div class="card-subtitle">Renseignements</div>
             </div>
 
             <div class="card">
                 <div class="card-body">
                     <div class="form-row mb-1">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label class="form-label" for="civilitePSWBB">Civilité du responsable</label>
+                            <label class="form-label" for="civiliteShatibi">Civilité du responsable</label>
                             <table style="width: 100%; table-layout: fixed;">
                                 <tr>
                                     <td class="text-center" style="padding : 5px 0 11px;">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="1" id="madame" name="civilitePSWBB" <?= isset($_POST['civilitePSWBB']) && $_POST['civilitePSWBB'] == 1 ? 'checked' : ''; ?> aria-describedby="Civilité">
+                                            <input class="form-check-input" type="radio" value="1" id="madame" name="civiliteShatibi" <?= isset($_POST['civiliteShatibi']) && $_POST['civiliteShatibi'] == 1 ? 'checked' : ''; ?> aria-describedby="Civilité">
                                             <label class="form-check-label ml-1" for="madame">
                                                 <span class="pointer ml-1">Mme</span>
                                             </label>
@@ -62,7 +62,7 @@ require '../views/header.php';
 
                                     <td class="text-center" style="padding : 5px 0 11px;">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="2" id="monsieur" name="civilitePSWBB" <?= isset($_POST['civilitePSWBB']) && $_POST['civilitePSWBB'] == 2 ? 'checked' : ''; ?> aria-describedby="Civilité">
+                                            <input class="form-check-input" type="radio" value="2" id="monsieur" name="civiliteShatibi" <?= isset($_POST['civiliteShatibi']) && $_POST['civiliteShatibi'] == 2 ? 'checked' : ''; ?> aria-describedby="Civilité">
                                             <label class="form-check-label ml-1" for="monsieur">
                                                 <span class="pointer ml-1">Mr</span>
                                             </label>
@@ -71,66 +71,74 @@ require '../views/header.php';
                                 </tr>
                             </table>
                             <div class="invalid-feedback" style="display: block;">
-                                <?= $error['genrePSWBB'] ?? ''; ?>
+                                <?= $error['genreShatibi'] ?? ''; ?>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label class="form-label" for="phonePSWBB">Téléphone</label>
-                            <input type="text" class="form-control text-center is-<?= isset($error['phonePSWBB']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="phonePSWBB" name="phonePSWBB" value="<?= $_POST['phonePSWBB'] ?? ''; ?>">
+                            <label class="form-label" for="phoneShatibi">Téléphone</label>
+                            <input type="text" class="form-control text-center is-<?= isset($error['phoneShatibi']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="phoneShatibi" name="phoneShatibi" value="<?= $_POST['phoneShatibi'] ?? ''; ?>">
                             <div class="invalid-feedback">
-                                <?= $error['phonePSWBB'] ?? ''; ?>
+                                <?= $error['phoneShatibi'] ?? ''; ?>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-1">
-                        <label class="form-label" for="responsablePSWBB">Nom / Prénom du responsable</label>
-                        <input type="text" class="form-control is-<?= isset($error['responsablePSWBB']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="responsablePSWBB" name="responsablePSWBB" value="<?= $_POST['responsablePSWBB'] ?? ''; ?>">
+                        <label class="form-label" for="responsableShatibi">Nom / Prénom du responsable</label>
+                        <input type="text" class="form-control is-<?= isset($error['responsableShatibi']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="responsableShatibi" name="responsableShatibi" value="<?= $_POST['responsableShatibi'] ?? ''; ?>">
                         <div class="invalid-feedback">
-                            <?= $error['responsablePSWBB'] ?? ''; ?>
+                            <?= $error['responsableShatibi'] ?? ''; ?>
                         </div>
                     </div>
 
                     <div class="mb-1">
-                        <label class="form-label" for="emailPSWBB">Email</label>
-                        <input type="text" class="form-control is-<?= isset($error['emailPSWBB']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="emailPSWBB" name="emailPSWBB" value="<?= $_POST['emailPSWBB'] ?? ''; ?>">
+                        <label class="form-label" for="emailShatibi">Email</label>
+                        <input type="text" class="form-control is-<?= isset($error['emailShatibi']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="emailShatibi" name="emailShatibi" value="<?= $_POST['emailShatibi'] ?? ''; ?>">
                         <div class="invalid-feedback">
-                            <?= $error['emailPSWBB'] ?? ''; ?>
+                            <?= $error['emailShatibi'] ?? ''; ?>
                         </div>
                     </div>
 
                     <div class="mb-1">
-                        <label class="form-label" for="adressePSWBB">Adresse</label>
-                        <input type="text" class="form-control is-<?= isset($error['adressePSWBB']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="adressePSWBB" name="adressePSWBB" value="<?= $_POST['adressePSWBB'] ?? ''; ?>">
+                        <label class="form-label" for="adresseShatibi">Adresse</label>
+                        <input type="text" class="form-control is-<?= isset($error['adresseShatibi']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="adresseShatibi" name="adresseShatibi" value="<?= $_POST['adresseShatibi'] ?? ''; ?>">
                         <div class="invalid-feedback">
-                            <?= $error['adressePSWBB'] ?? ''; ?>
+                            <?= $error['adresseShatibi'] ?? ''; ?>
                         </div>
                     </div>
 
                     <div class="form-row mb-1">
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                            <label class="form-label" for="cpPSWBB">Code postal</label>
-                            <input type="text" class="form-control is-<?= isset($error['cpPSWBB']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="cpPSWBB" name="cpPSWBB" value="<?= $_POST['cpPSWBB'] ?? ''; ?>">
+                            <label class="form-label" for="cpShatibi">Code postal</label>
+                            <input type="text" class="form-control is-<?= isset($error['cpShatibi']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="cpShatibi" name="cpShatibi" value="<?= $_POST['cpShatibi'] ?? ''; ?>">
                             <div class="invalid-feedback">
-                                <?= $error['cpPSWBB'] ?? ''; ?>
+                                <?= $error['cpShatibi'] ?? ''; ?>
                             </div>
                         </div>
 
                         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                            <label class="form-label" for="villePSWBB">Ville</label>
-                            <input type="text" class="form-control is-<?= isset($error['villePSWBB']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="villePSWBB" name="villePSWBB" value="<?= $_POST['villePSWBB'] ?? ''; ?>">
+                            <label class="form-label" for="villeShatibi">Ville</label>
+                            <input type="text" class="form-control is-<?= isset($error['villeShatibi']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="villeShatibi" name="villeShatibi" value="<?= $_POST['villeShatibi'] ?? ''; ?>">
                             <div class="invalid-feedback">
-                                <?= $error['villePSWBB'] ?? ''; ?>
+                                <?= $error['villeShatibi'] ?? ''; ?>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-1">
-                        <label class="form-label" for="horaires">Horaires</label>
-                        <textarea rows="4" class="form-control is-<?= isset($error['horaires']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" id="horaires" name="horaires"><?= $_POST['horaires'] ?? ''; ?></textarea>
+                        <label class="form-label" for="accueil">Horaires de l'accueil</label>
+                        <textarea rows="4" class="form-control is-<?= isset($error['accueil']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="accueil" name="accueil"><?= $_POST['accueil'] ?? ''; ?></textarea>
                         <div class="invalid-feedback">
-                            <?= $error['horaires'] ?? ''; ?>
+                            <?= $error['accueil'] ?? ''; ?>
+                        </div>
+                    </div>
+
+                    <div class="mb-1">
+                        <label class="form-label" for="bureau">Horaires du bureau</label>
+                        <textarea rows="4" class="form-control is-<?= isset($error['bureau']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" id="bureau" name="bureau"><?= $_POST['bureau'] ?? ''; ?></textarea>
+                        <div class="invalid-feedback">
+                            <?= $error['bureau'] ?? ''; ?>
                         </div>
                     </div>
                 </div>
@@ -151,7 +159,7 @@ require '../views/header.php';
                                 <i class="fa fa-whatsapp" style="font-size: 25pt;"></i>
                             </div>
                         </div>
-                        <input type="text" class="form-control is-<?= isset($error['whatsapp']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" placeholder="Whatsapp" id="whatsapp" name="whatsapp" value="<?= $_POST['whatsapp'] ?? ''; ?>" aria-label=" whatsapp" aria-describedby="iconWhatsapp">
+                        <input type="text" class="form-control is-<?= isset($error['whatsapp']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" placeholder="Whatsapp" id="whatsapp" name="whatsapp" value="<?= $_POST['whatsapp'] ?? ''; ?>" aria-label=" whatsapp" aria-describedby="iconWhatsapp">
                         <div class="invalid-feedback">
                             <?= $error['whatsapp'] ?? ''; ?>
                         </div>
@@ -163,7 +171,7 @@ require '../views/header.php';
                                 <i class="fa fa-facebook-square" style="font-size: 25pt;"></i>
                             </div>
                         </div>
-                        <input type="text" class="form-control is-<?= isset($error['facebook']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" placeholder="Facebook" id="facebook" name="facebook" value="<?= $_POST['facebook'] ?? ''; ?>" aria-label=" facebook" aria-describedby="iconFacebook">
+                        <input type="text" class="form-control is-<?= isset($error['facebook']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" placeholder="Facebook" id="facebook" name="facebook" value="<?= $_POST['facebook'] ?? ''; ?>" aria-label=" facebook" aria-describedby="iconFacebook">
                         <div class="invalid-feedback">
                             <?= $error['facebook'] ?? ''; ?>
                         </div>
@@ -175,7 +183,7 @@ require '../views/header.php';
                                 <i class="fa fa-instagram" style="font-size: 25pt;"></i>
                             </div>
                         </div>
-                        <input type="text" class="form-control is-<?= isset($error['instagram']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" placeholder="instagram" id="instagram" name="instagram" value="<?= $_POST['instagram'] ?? ''; ?>" aria-label=" instagram" aria-describedby="iconInstagram">
+                        <input type="text" class="form-control is-<?= isset($error['instagram']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" placeholder="instagram" id="instagram" name="instagram" value="<?= $_POST['instagram'] ?? ''; ?>" aria-label=" instagram" aria-describedby="iconInstagram">
                         <div class="invalid-feedback">
                             <?= $error['instagram'] ?? ''; ?>
                         </div>
@@ -187,7 +195,7 @@ require '../views/header.php';
                                 <i class="fa fa-youtube-play" style="font-size: 25pt;"></i>
                             </div>
                         </div>
-                        <input type="text" class="form-control is-<?= isset($error['youtube']) ? 'invalid' : (isset($_POST['subFormPSWBB']) ? 'valid' : ''); ?>" placeholder="You Tube" id="youtube" name="youtube" value="<?= $_POST['youtube'] ?? ''; ?>" aria-label="youtube" aria-describedby="iconYoutube">
+                        <input type="text" class="form-control is-<?= isset($error['youtube']) ? 'invalid' : (isset($_POST['subFormShatibi']) ? 'valid' : ''); ?>" placeholder="You Tube" id="youtube" name="youtube" value="<?= $_POST['youtube'] ?? ''; ?>" aria-label="youtube" aria-describedby="iconYoutube">
                         <div class="invalid-feedback">
                             <?= $error['youtube'] ?? ''; ?>
                         </div>
@@ -195,9 +203,9 @@ require '../views/header.php';
                 </div>
 
                 <div class="card-footer">
-                    <a href="?slug=pswbb" class="btn btn-secondary" onclick="Processing()">Annuler</a>
+                    <a href="?slug=Shatibi" class="btn btn-secondary" onclick="Processing()">Annuler</a>
 
-                    <button type="submit" class="btn btn-primary" name="subFormPSWBB" onclick="Processing('Enregistrement des données...')">Valider</button>
+                    <button type="submit" class="btn btn-primary" name="subFormShatibi" onclick="Processing('Enregistrement des données...')">Valider</button>
                 </div>
             </div>
         </div>

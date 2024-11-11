@@ -1,6 +1,6 @@
 <?php
 
-$Titre = $Description = "Page introuvéble";
+$Titre = $Description = "Page introuvable";
 
 require '../views/header.php';
 ?>
@@ -10,7 +10,7 @@ require '../views/header.php';
         <h2>Oops !</h2>
         <hr>
         <h5 class="my-5">
-            Cette page est introuvable...
+            La page que vous recherché est introuvable...
         </h5>
         <a href="?" class="btn btn-warning">Retour</a>
     </div>

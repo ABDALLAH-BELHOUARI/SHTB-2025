@@ -1,6 +1,9 @@
 <?php
 
 
+$Title = "Se connecter";
+$Description = "";
+
 require '../views/header.php';
 ?>
 

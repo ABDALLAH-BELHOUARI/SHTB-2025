@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg grady-dark">
     <div class="container-fluid">
-        <button type="button" id="sidebarCollapse" class="navbar-btn rounded-lg ml-2">
+        <button type="button" id="sidebarCollapse" class="navbar-btn rounded-lg mx-2">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <a class="nav-link ml-2" href="?slug="><i class="fa fa-home fa-2x"></i></a>
+        <a class="nav-link" href="?slug="><i class="fa fa-home fa-2x"></i></a>
 
         <a class="nav-link" href="?slug=profil"><i class="fa fa-user fa-2x"></i></a>
 

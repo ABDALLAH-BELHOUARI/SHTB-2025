@@ -2,7 +2,6 @@
 ControlAccess([1]);
 
 
-
 $Title = $Description = 'Interface Administrateur';
 require '../views/header.php';
 ?>
